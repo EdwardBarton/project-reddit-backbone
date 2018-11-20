@@ -23,26 +23,47 @@
         <h3>Add a New Post</h3>
 
         <div class="form-group">
-          <input type="text" id="post-name" class="form-control" placeholder="Post Text">
-          </input>
-
-          <input type="text" id="post-user" class="form-control" placeholder="Your Name">
-          </input>
+          <input type="text" id="post-user" class="form-control" placeholder="Name" autofocus/>
+          <input type="text" id="post-text" class="form-control" placeholder="Post"/>
         </div>
 
-        <button type="button" class="btn btn-primary add-post">Post</button>
+        <button type="submit" class="btn btn-primary add-post">Add Post</button>
       </form>
 
     </div>
   </div>
 
   <script id="post-template" type="text/x-handlebars-template">
-    <a href="#" class="remove">remove</a>
-    {{ text }}
+    <a href="#" class="remove-post">remove</a>
+    <a href="#" class="toggle-comments">comments</a>
+    <div>
+      {{ text }}
+    </div>
     <div>
       Posted By: <strong> {{ user }} </strong>
     </div>
+    <div class="row">
+      <form class="form-group add-comment-form">
+        <div class="col-md-4">
+          <input type="text" id="comment-user" placeholder="Name" class="form-control" autofocus/>
+        </div>
+        <div class="col-md-4">
+          <input type="text" id="comment-text" placeholder="Comment" class="form-control" autofocus/>
+        </div>
+        <button type="submit" class="btn btn-sm btn-primary add-comment">Add Comment</button>
+      </form>
+    </div>
+    <div class="comments"></div>
     <hr/>
+  </script>
+
+  <script id="comment-template" type="text/x-handlebars-template">
+    <div class="comment">
+      <strong>{{ user }}</strong>: {{ text }}
+      <span>
+        <a href="#" class="remove-comment"> X</a>
+      </span>
+    </div>
   </script>
 
   <script src="main.js"></script>
